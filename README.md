@@ -4,6 +4,8 @@
 
 Il permet de transformer un simple dossier (`C:\techbar`) en **launcher visuel dynamique** dans Zebar, sans avoir à éditer manuellement des fichiers JSON.
 
+---
+
 ## Screenshots
 
 ### Main view
@@ -22,7 +24,7 @@ Techbar repose sur une architecture simple :
 
 ```text
 C:\techbar  →  generate_jzone.py  →  jzone.json  →  Zebar v3 (template)
-```
+````
 
 * 📁 **Filesystem** → définit la structure
 * ⚙️ **Python** → génère la config
@@ -30,14 +32,36 @@ C:\techbar  →  generate_jzone.py  →  jzone.json  →  Zebar v3 (template)
 
 ---
 
-## ✨ Fonctionnalités
+## ⚡ Quick Start
 
-* Génération automatique de `jzone.json`
-* Navigation basée sur les dossiers
-* Personnalisation via JSON locaux
-* Gestion intelligente des raccourcis `.lnk`
-* Support de plusieurs types (apps, scripts, URLs, etc.)
-* Aucun besoin d’éditer du JSON à la main
+1. Copier le template dans :
+
+   ```text
+   C:\Users\<USERNAME>\.glzr\zebar\
+   ```
+
+2. Créer :
+
+   ```text
+   C:\techbar
+   ```
+
+3. Ajouter les fichiers :
+
+   * `generate_jzone.py`
+   * `Start_Generate.bat`
+
+4. Installer la dépendance Python :
+
+   ```bash
+   pip install pywin32
+   ```
+
+5. Lancer :
+
+   ```text
+   Start_Generate.bat
+   ```
 
 ---
 
@@ -46,8 +70,6 @@ C:\techbar  →  generate_jzone.py  →  jzone.json  →  Zebar v3 (template)
 ### 1. Installer Zebar v3
 
 Assurez-vous d’avoir **Zebar v3** installé.
-
----
 
 ### 2. Installer le template Techbar
 
@@ -59,17 +81,11 @@ C:\Users\<USERNAME>\.glzr\zebar\
 
 > ⚠️ Le dossier `.glzr` est caché sous Windows.
 
----
-
 ### 3. Créer le dossier source
-
-Créez :
 
 ```text
 C:\techbar
 ```
-
----
 
 ### 4. Ajouter les fichiers
 
@@ -77,8 +93,6 @@ Dans `C:\techbar`, placez :
 
 * `generate_jzone.py`
 * `Start_Generate.bat`
-
----
 
 ### 5. Exemple minimal
 
@@ -93,9 +107,25 @@ C:\techbar
 
 ---
 
-## ▶️ Utilisation
+## 🧩 Prérequis
 
-### Lancer la génération
+* Windows
+* Python 3 recommandé
+* Zebar v3 installé
+
+### Dépendance Python
+
+```bash
+pip install pywin32
+```
+
+`pywin32` permet de résoudre correctement les raccourcis `.lnk`.
+
+Sans cette dépendance, Techbar fonctionne, mais la détection des cibles `.lnk` peut être limitée.
+
+---
+
+## ▶️ Utilisation
 
 Double-cliquez sur :
 
@@ -103,14 +133,14 @@ Double-cliquez sur :
 Start_Generate.bat
 ```
 
-Ce script :
+Le script :
 
 * génère `jzone.json`
-* copie automatiquement le fichier dans le template Zebar
+* copie automatiquement le fichier dans Zebar
 
 ---
 
-## ⚙️ Configuration du script
+## ⚙️ Configuration
 
 Dans `Start_Generate.bat`, adaptez le chemin :
 
@@ -120,15 +150,24 @@ set ZEBAR_TARGET=C:\Users\USERNAME\.glzr\zebar\techbar\jzone.json
 
 ---
 
+## ✨ Fonctionnalités
+
+* Génération automatique de `jzone.json`
+* Navigation basée sur les dossiers
+* Personnalisation via JSON locaux
+* Gestion intelligente des raccourcis `.lnk`
+* Support de plusieurs types, apps, scripts, URLs, etc.
+* Aucun besoin d’éditer du JSON à la main
+
+---
+
 ## 🧠 Fonctionnement
 
 ### Règles principales
 
 * dossier normal → `view`
 * dossier `$_Nom` → `folder`
-* fichiers → convertis en actions Zebar
-
----
+* fichiers → actions Zebar
 
 ### Extensions supportées
 
@@ -137,8 +176,6 @@ set ZEBAR_TARGET=C:\Users\USERNAME\.glzr\zebar\techbar\jzone.json
 * `.url` → URL
 * `.rdp` → fichier
 * `.ps1` / `.bat` → commande
-
----
 
 ### Résolution des raccourcis
 
@@ -150,7 +187,7 @@ set ZEBAR_TARGET=C:\Users\USERNAME\.glzr\zebar\techbar\jzone.json
 
 ## 🎛️ Personnalisation
 
-### `.zebar.json` (niveau dossier)
+### `.zebar.json` (dossier)
 
 ```json
 {
@@ -160,9 +197,7 @@ set ZEBAR_TARGET=C:\Users\USERNAME\.glzr\zebar\techbar\jzone.json
 }
 ```
 
----
-
-### `.items.json` (niveau fichiers)
+### `.items.json` (fichiers)
 
 ```json
 {
@@ -172,8 +207,6 @@ set ZEBAR_TARGET=C:\Users\USERNAME\.glzr\zebar\techbar\jzone.json
   }
 }
 ```
-
----
 
 ### `.whattypes.json` (override global)
 
@@ -206,15 +239,6 @@ Par défaut :
 ```text
 order = 9999
 ```
-
----
-
-## 🎨 Résultat
-
-*(ajoutez ici vos captures d’écran)*
-
-* vue principale
-* vue secondaire (Apps par exemple)
 
 ---
 
