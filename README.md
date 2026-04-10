@@ -9,6 +9,16 @@ Je te le structure comme un vrai projet, sans blabla inutile, avec une logique f
 
 Il permet de transformer un simple dossier (`C:\techbar`) en **launcher visuel dynamique** dans Zebar, sans avoir à éditer manuellement des fichiers JSON.
 
+## Screenshots
+
+### Main view
+
+![Techbar main view](./screenshots/main.png)
+
+### Example view
+
+![Techbar example view](./screenshots/view.png)
+
 ---
 
 ## 🧠 Concept
