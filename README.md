@@ -1,8 +1,3 @@
-Parfait, là on va faire un README **propre, clair, publiable direct**.
-Je te le structure comme un vrai projet, sans blabla inutile, avec une logique fluide.
-
----
-
 # 🚀 Techbar
 
 **Techbar** est un générateur de configuration pour **Zebar v3**, basé sur l’arborescence de fichiers Windows.
