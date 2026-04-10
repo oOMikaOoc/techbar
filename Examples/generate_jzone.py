@@ -16,6 +16,7 @@ BASE_PATH = Path(r"C:\techbar")
 OUTPUT_FILE = BASE_PATH / "jzone.json"
 CONFIG_FILE_NAME = ".zebar.json"
 ITEMS_CONFIG_FILE_NAME = ".items.json"
+FOLDER_ITEMS_CONFIG_FILE_NAME = ".folders.json"
 WHATTYPES_CONFIG_FILE_NAME = ".whattypes.json"
 SHORTCUT_FOLDER_PREFIX = "$_"
 
@@ -66,7 +67,7 @@ NAME_ICON_HINTS = {
 
 
 def is_excluded_name(name: str, allow_special_files: bool = False) -> bool:
-    if allow_special_files and name in {CONFIG_FILE_NAME, ITEMS_CONFIG_FILE_NAME}:
+    if allow_special_files and name in {CONFIG_FILE_NAME, ITEMS_CONFIG_FILE_NAME, FOLDER_ITEMS_CONFIG_FILE_NAME}:
         return False
     return name.startswith(EXCLUDE_PREFIXES)
 
@@ -342,10 +343,52 @@ def read_items_config(folder_path: Path) -> Dict[str, Dict[str, Any]]:
         return {}
 
 
+def read_folder_items_config(folder_path: Path) -> Dict[str, Dict[str, Any]]:
+    folder_items_config_path = folder_path / FOLDER_ITEMS_CONFIG_FILE_NAME
+
+    if not folder_items_config_path.exists():
+        return {}
+
+    try:
+        raw = json.loads(folder_items_config_path.read_text(encoding="utf-8"))
+        if isinstance(raw, dict):
+            return {
+                str(key): value
+                for key, value in raw.items()
+                if isinstance(value, dict)
+            }
+        print(f"{folder_items_config_path} doit contenir un objet JSON.")
+        return {}
+    except Exception:
+        print(f"Config dossiers invalide dans {folder_items_config_path}, ignoree.")
+        return {}
+
+
+def read_root_folder_items_config(base_path: Path) -> Dict[str, Dict[str, Any]]:
+    folder_items_config_path = base_path / FOLDER_ITEMS_CONFIG_FILE_NAME
+
+    if not folder_items_config_path.exists():
+        return {}
+
+    try:
+        raw = json.loads(folder_items_config_path.read_text(encoding="utf-8"))
+        if isinstance(raw, dict):
+            return {
+                str(key): value
+                for key, value in raw.items()
+                if isinstance(value, dict)
+            }
+        print(f"{folder_items_config_path} doit contenir un objet JSON.")
+        return {}
+    except Exception:
+        print(f"Config dossiers invalide dans {folder_items_config_path}, ignoree.")
+        return {}
+
+
 def is_valid_file(file_path: Path) -> bool:
     if not file_path.is_file():
         return False
-    if file_path.name in {CONFIG_FILE_NAME, ITEMS_CONFIG_FILE_NAME}:
+    if file_path.name in {CONFIG_FILE_NAME, ITEMS_CONFIG_FILE_NAME, FOLDER_ITEMS_CONFIG_FILE_NAME}:
         return False
     if is_excluded_name(file_path.name):
         return False
@@ -397,11 +440,48 @@ def item_sort_key(item: Dict[str, Any]) -> Tuple[int, str]:
     return normalize_order(item.get("order"), DEFAULT_ORDER), str(item.get("label", "")).lower()
 
 
+def build_folder_shortcut_item(
+    item_name: str,
+    view_name: str,
+    item_config: Optional[Dict[str, Any]] = None,
+) -> Optional[Dict[str, Any]]:
+    item_config = item_config or {}
+
+    if bool(item_config.get("hidden", False)):
+        return None
+
+    target = str(item_config.get("target") or "").strip()
+    if not target:
+        return None
+
+    label = str(item_config.get("label") or item_name)
+    icon = str(item_config.get("icon") or "📁")
+    order = normalize_order(item_config.get("order"), DEFAULT_ORDER)
+    background_color = normalize_color_value(item_config)
+
+    item: Dict[str, Any] = {
+        "id": safe_id(f"{view_name}-{label}"),
+        "type": "folder",
+        "label": label,
+        "icon": icon,
+        "visible": True,
+        "order": order,
+        "target": target,
+    }
+
+    if background_color:
+        item["backgroundColor"] = background_color
+
+    return item
+
+
 def build_view(folder_path: Path, folder_config: Dict[str, Any], view_name: str) -> Dict[str, Any]:
     left_items: List[Dict[str, Any]] = []
     center_items: List[Dict[str, Any]] = []
+    right_items: List[Dict[str, Any]] = static_right_section(view_name)
 
     items_config = read_items_config(folder_path)
+    folder_items_config = read_folder_items_config(folder_path)
 
     base_items = [
         {
@@ -442,11 +522,70 @@ def build_view(folder_path: Path, folder_config: Dict[str, Any], view_name: str)
     target_section.extend(base_items)
     target_section.extend(generated_items)
 
+    extra_folder_items: Dict[str, List[Dict[str, Any]]] = {
+        "left": [],
+        "center": [],
+        "right": [],
+    }
+
+    for item_name, item_config in folder_items_config.items():
+        item = build_folder_shortcut_item(item_name, view_name, item_config=item_config)
+        if item is None:
+            continue
+
+        section = normalize_section(str(item_config.get("section") or item_config.get("viewSection") or ""), "left")
+        extra_folder_items[section].append(item)
+
+    for section_name in ("left", "center", "right"):
+        extra_folder_items[section_name].sort(key=item_sort_key)
+
+    left_items.extend(extra_folder_items["left"])
+    center_items.extend(extra_folder_items["center"])
+    right_items.extend(extra_folder_items["right"])
+    right_items.sort(key=item_sort_key)
+
     return {
         "left": left_items,
         "center": center_items,
-        "right": static_right_section(view_name),
+        "right": right_items,
     }
+
+
+def build_virtual_file_view(
+    folder_items_config: Dict[str, Dict[str, Any]],
+    folder_config: Dict[str, Any],
+    view_name: str = "file",
+) -> Dict[str, Any]:
+    center_items: List[Dict[str, Any]] = [
+        {
+            "id": f"back-{view_name}",
+            "type": "back",
+            "label": folder_config["backLabel"],
+            "icon": "↩️",
+            "visible": True,
+            "order": 0,
+        }
+    ]
+
+    for item_name, item_config in folder_items_config.items():
+        item = build_folder_shortcut_item(item_name, view_name, item_config=item_config)
+        if item is None:
+            continue
+
+        center_items.append(item)
+
+    center_items.sort(key=item_sort_key)
+
+    view_data = {
+        "left": [],
+        "center": center_items,
+        "right": [],
+    }
+
+    if folder_config.get("backgroundColor", "").strip():
+        view_data["backgroundColor"] = folder_config["backgroundColor"].strip()
+
+    return view_data
 
 
 def folder_sort_key(folder_entry: Tuple[Path, Dict[str, Any]]) -> Tuple[int, str]:
@@ -470,6 +609,7 @@ def generate_jzone(base_path: Path = BASE_PATH, output_file: Path = OUTPUT_FILE)
         }
     }
     whattypes_config = read_whattypes_config(base_path)
+    root_folder_items_config = read_root_folder_items_config(base_path)
 
     raw_folders = [
         p for p in base_path.iterdir()
@@ -528,6 +668,39 @@ def generate_jzone(base_path: Path = BASE_PATH, output_file: Path = OUTPUT_FILE)
             view_data["backgroundColor"] = folder_config["backgroundColor"].strip()
 
         views[view_name] = view_data
+
+    if root_folder_items_config:
+        file_override = whattypes_config.get("File") or whattypes_config.get("file") or {}
+        file_folder_config = apply_folder_override(
+            {
+                "label": "File",
+                "icon": "📁",
+                "mainSection": "right",
+                "viewSection": "center",
+                "order": 100,
+                "hidden": False,
+                "openFolderLabel": "",
+                "backLabel": "Retour",
+                "backgroundColor": "#1f72cd",
+            },
+            file_override,
+        )
+
+        if not file_folder_config["hidden"]:
+            view_button = apply_folder_style(
+                {
+                    "id": "view-file",
+                    "type": "view",
+                    "label": file_folder_config["label"],
+                    "icon": file_folder_config["icon"],
+                    "targetView": "file",
+                    "visible": True,
+                    "order": file_folder_config["order"],
+                },
+                file_folder_config,
+            )
+            views["main"][file_folder_config["mainSection"]].append(view_button)
+            views["file"] = build_virtual_file_view(root_folder_items_config, file_folder_config, "file")
 
     for section_name in ("left", "center", "right"):
         views["main"][section_name].sort(key=item_sort_key)

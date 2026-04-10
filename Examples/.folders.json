@@ -1,0 +1,17 @@
+{
+  "Dossiers fonctionnement": {
+    "label": "Template",
+    "target": "C:\\Users\\mpointaux.admin\\.glzr\\zebar\\techbar",
+    "icon": "📁",
+    "order": 10,
+    "section": "left"
+  },
+  "Dossiers archives": {
+    "label" : "Data-Techbar",
+    "target": "C:\\techbar",
+    "icon": "🗂️",
+    "order": 20,
+    "section": "right",
+    "backgroundColor": ""
+  }
+}
