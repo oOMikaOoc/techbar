@@ -1,0 +1,11 @@
+{
+  "label": "Nom a afficher",
+  "icon": "📁",
+  "mainSection": "left",
+  "viewSection": "left",
+  "order": 100,
+  "hidden": false,
+  "openFolderLabel": "Ouvrir dossier",
+  "backLabel": "Retour",
+  "backgroundColor" : "#CodeCouleur"
+}

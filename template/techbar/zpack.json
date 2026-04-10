@@ -1,0 +1,71 @@
+{
+  "$schema": "https://github.com/glzr-io/zebar/raw/v3.3.1/resources/zpack-schema.json",
+  "name": "techbar",
+  "version": "0.1.0",
+  "description": "Techbar avec navigation par vues",
+  "tags": [
+    "techbar",
+    "launcher",
+    "views"
+  ],
+  "previewImages": [
+    "./resources/preview-image-1.png"
+  ],
+  "repositoryUrl": "",
+  "widgets": [
+    {
+      "name": "techbar",
+      "htmlPath": "techbar/index.html",
+      "zOrder": "normal",
+      "shownInTaskbar": false,
+      "focused": false,
+      "resizable": false,
+      "transparent": true,
+      "includeFiles": [
+        "techbar/**"
+      ],
+      "caching": {
+        "defaultDuration": 604800,
+        "rules": []
+      },
+      "privileges": {
+        "shellCommands": [
+          {
+            "program": "cmd.exe",
+            "argsRegex": ".*"
+          },
+          {
+            "program": "explorer.exe",
+            "argsRegex": ".*"
+          },
+          {
+            "program": "rundll32.exe",
+            "argsRegex": ".*"
+          },
+          {
+            "program": "powershell.exe",
+            "argsRegex": ".*"
+          }
+        ]
+      },
+      "presets": [
+        {
+          "name": "default",
+          "anchor": "top_left",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "width": "100%",
+          "height": "34px",
+          "monitorSelection": {
+            "type": "primary"
+          },
+          "dockToEdge": {
+            "enabled": true,
+            "edge": null,
+            "windowMargin": "0px"
+          }
+        }
+      ]
+    }
+  ]
+}

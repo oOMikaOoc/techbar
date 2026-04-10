@@ -1,0 +1,789 @@
+{
+  "defaultView": "main",
+  "views": {
+    "main": {
+      "left": [
+        {
+          "id": "view-apps",
+          "type": "view",
+          "label": "Apps",
+          "icon": "📦",
+          "targetView": "apps",
+          "visible": true,
+          "order": 9999
+        },
+        {
+          "id": "view-outils",
+          "type": "view",
+          "label": "Outils",
+          "icon": "🧰",
+          "targetView": "outils",
+          "visible": true,
+          "order": 9999
+        },
+        {
+          "id": "view-rdp",
+          "type": "view",
+          "label": "RDP",
+          "icon": "🖥️",
+          "targetView": "rdp",
+          "visible": true,
+          "order": 9999
+        },
+        {
+          "id": "folder-temp",
+          "type": "folder",
+          "label": "Temp",
+          "icon": "🗂️",
+          "target": "C:\\techbar\\Temp",
+          "visible": true,
+          "order": 9999
+        }
+      ],
+      "center": [
+        {
+          "id": "view-clients",
+          "type": "view",
+          "label": "Clients",
+          "icon": "👥",
+          "targetView": "clients",
+          "visible": true,
+          "order": 9999
+        },
+        {
+          "id": "view-scripts",
+          "type": "view",
+          "label": "Scripts",
+          "icon": "⚙️",
+          "targetView": "scripts",
+          "visible": true,
+          "order": 9999
+        },
+        {
+          "id": "view-services",
+          "type": "view",
+          "label": "Services",
+          "icon": "🌐",
+          "targetView": "services",
+          "visible": true,
+          "order": 9999
+        }
+      ],
+      "right": [
+        {
+          "id": "sysinfo-main",
+          "type": "sysinfo",
+          "label": "Sysinfo",
+          "icon": "",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "clock-main",
+          "type": "clock",
+          "label": "Heure",
+          "icon": "",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "view-file",
+          "type": "view",
+          "label": "File",
+          "icon": "📁",
+          "targetView": "file",
+          "visible": true,
+          "order": 100,
+          "backgroundColor": "#1f72cd"
+        }
+      ]
+    },
+    "file": {
+      "left": [],
+      "center": [
+        {
+          "id": "back-file",
+          "type": "back",
+          "label": "Retour",
+          "icon": "↩️",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "open-file",
+          "type": "folder",
+          "label": "Ouvrir dossier",
+          "icon": "📂",
+          "target": "C:\\techbar\\File",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "file-techbar-raccourci",
+          "type": "file",
+          "label": "techbar - Raccourci",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Users\\mpointaux.admin\\.glzr\\zebar\\techbar"
+        }
+      ],
+      "right": [
+        {
+          "id": "sysinfo-file",
+          "type": "sysinfo",
+          "label": "Sysinfo",
+          "icon": "",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "clock-file",
+          "type": "clock",
+          "label": "Heure",
+          "icon": "",
+          "visible": true,
+          "order": 1
+        }
+      ],
+      "backgroundColor": "#1f72cd"
+    },
+    "apps": {
+      "left": [
+        {
+          "id": "back-apps",
+          "type": "back",
+          "label": "Retour",
+          "icon": "↩️",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "open-apps",
+          "type": "folder",
+          "label": "Ouvrir dossier",
+          "icon": "📂",
+          "target": "C:\\techbar\\Apps",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "apps-vscode",
+          "type": "app",
+          "label": "VSCODE",
+          "icon": "🛠️",
+          "visible": true,
+          "order": 10,
+          "target": "C:\\Program Files\\Microsoft VS Code\\Code.exe",
+          "backgroundColor": "#fefefe"
+        },
+        {
+          "id": "apps-antigravity",
+          "type": "app",
+          "label": "Antigravity",
+          "icon": "↗️",
+          "visible": true,
+          "order": 11,
+          "target": "C:\\Users\\mpointaux.admin\\AppData\\Local\\Programs\\Antigravity\\Antigravity.exe"
+        },
+        {
+          "id": "apps-arduino-ide",
+          "type": "app",
+          "label": "Arduino IDE",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\Arduino IDE\\Arduino IDE.exe"
+        },
+        {
+          "id": "apps-audacity",
+          "type": "app",
+          "label": "Audacity",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\Audacity\\Audacity.exe"
+        },
+        {
+          "id": "apps-balenaetcher-portable-1-18-11",
+          "type": "app",
+          "label": "balenaEtcher-Portable-1.18.11",
+          "icon": "📦",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\Apps\\balenaEtcher-Portable-1.18.11.exe"
+        },
+        {
+          "id": "apps-client-pronote-2025",
+          "type": "app",
+          "label": "Client PRONOTE 2025",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\Index Education\\Pronote 2025\\Réseau\\Client\\Client PRONOTE.exe"
+        },
+        {
+          "id": "apps-davinci-resolve",
+          "type": "app",
+          "label": "DaVinci Resolve",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\Resolve.exe"
+        },
+        {
+          "id": "apps-docker-desktop",
+          "type": "app",
+          "label": "Docker Desktop",
+          "icon": "🐳",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe"
+        },
+        {
+          "id": "apps-easyeda",
+          "type": "app",
+          "label": "EasyEDA",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\EasyEDA\\easyeda.exe"
+        },
+        {
+          "id": "apps-everything",
+          "type": "app",
+          "label": "Everything",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\Everything\\Everything.exe"
+        },
+        {
+          "id": "apps-flow-launcher",
+          "type": "app",
+          "label": "Flow Launcher",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Users\\mpointaux.admin\\AppData\\Local\\FlowLauncher\\Flow.Launcher.exe"
+        },
+        {
+          "id": "apps-inkscape",
+          "type": "app",
+          "label": "Inkscape",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\Inkscape\\bin\\inkscape.exe"
+        },
+        {
+          "id": "apps-mremoteng-raccourci",
+          "type": "app",
+          "label": "mRemoteNG - Raccourci",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Users\\mpointaux.admin\\Documents\\mRemoteNG-Portable\\mRemoteNG.exe"
+        },
+        {
+          "id": "apps-sd-card-formatter",
+          "type": "app",
+          "label": "SD Card Formatter",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Windows\\Installer\\{685D9469-D3C5-44CD-944D-0336A30D97FE}\\NewShortcut11_9F21041712364E7FBB19D6D84D3AFF1D.exe"
+        },
+        {
+          "id": "apps-stepshot-guides",
+          "type": "app",
+          "label": "StepShot Guides",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Users\\mpointaux.admin\\AppData\\Local\\Programs\\StepShotGuides\\StepShot Guides.exe"
+        },
+        {
+          "id": "apps-winscp",
+          "type": "app",
+          "label": "WinSCP",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files (x86)\\WinSCP\\WinSCP.exe"
+        },
+        {
+          "id": "apps-zebar",
+          "type": "app",
+          "label": "Zebar",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\glzr.io\\Zebar\\zebar.exe"
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "id": "sysinfo-apps",
+          "type": "sysinfo",
+          "label": "Sysinfo",
+          "icon": "",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "clock-apps",
+          "type": "clock",
+          "label": "Heure",
+          "icon": "",
+          "visible": true,
+          "order": 1
+        }
+      ]
+    },
+    "clients": {
+      "left": [
+        {
+          "id": "back-clients",
+          "type": "back",
+          "label": "Retour",
+          "icon": "↩️",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "open-clients",
+          "type": "folder",
+          "label": "Ouvrir dossier",
+          "icon": "📂",
+          "target": "C:\\techbar\\Clients",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "clients-consommables-sharp",
+          "type": "url",
+          "label": "Consommables - Sharp",
+          "icon": "🖨️",
+          "visible": true,
+          "order": 9999,
+          "target": "https://www.sharp.fr/service-support-pour-les-partenaires-sharp/support-pour-les-partenaires-sharp/commandes-de"
+        },
+        {
+          "id": "clients-demandes-d-intervention-sharp",
+          "type": "url",
+          "label": "Demandes d'intervention - Sharp",
+          "icon": "🖨️",
+          "visible": true,
+          "order": 9999,
+          "target": "https://www.sharp.fr/demandes-dintervention"
+        },
+        {
+          "id": "clients-espace-client-b-contact",
+          "type": "url",
+          "label": "Espace client B_contact",
+          "icon": "🔗",
+          "visible": true,
+          "order": 9999,
+          "target": "https://portail.bcontact.fr/ArtisWeb/portail/login/auth/01.action"
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "id": "sysinfo-clients",
+          "type": "sysinfo",
+          "label": "Sysinfo",
+          "icon": "",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "clock-clients",
+          "type": "clock",
+          "label": "Heure",
+          "icon": "",
+          "visible": true,
+          "order": 1
+        }
+      ]
+    },
+    "outils": {
+      "left": [
+        {
+          "id": "back-outils",
+          "type": "back",
+          "label": "Retour",
+          "icon": "↩️",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "open-outils",
+          "type": "folder",
+          "label": "Ouvrir dossier",
+          "icon": "📂",
+          "target": "C:\\techbar\\Outils",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "outils-analyse-serveur",
+          "type": "app",
+          "label": "Analyse_Serveur",
+          "icon": "📦",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\Outils\\Analyse_Serveur.exe"
+        },
+        {
+          "id": "outils-couteausuissebriand",
+          "type": "app",
+          "label": "CouteauSuisseBriand",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Users\\mpointaux.admin\\Documents\\My documents\\My Programs\\CouteauSuisseBriand\\dist\\CouteauSuisseBriand\\CouteauSuisseBriand.exe"
+        },
+        {
+          "id": "outils-crystaldiskinfo-kurei-kei-edition",
+          "type": "app",
+          "label": "CrystalDiskInfo Kurei Kei Edition",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\CrystalDiskInfo\\DiskInfo64K.exe"
+        },
+        {
+          "id": "outils-crystaldiskmark-9",
+          "type": "app",
+          "label": "CrystalDiskMark 9",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\CrystalDiskMark9\\DiskMark64.exe"
+        },
+        {
+          "id": "outils-glpisearch",
+          "type": "app",
+          "label": "glpiSearch",
+          "icon": "🎫",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\Outils\\glpiSearch.exe"
+        },
+        {
+          "id": "outils-h2testw",
+          "type": "app",
+          "label": "h2testw",
+          "icon": "📦",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\Outils\\h2testw.exe"
+        },
+        {
+          "id": "outils-makemkv",
+          "type": "app",
+          "label": "MakeMKV",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files (x86)\\MakeMKV\\makemkv.exe"
+        },
+        {
+          "id": "outils-printmonitoring",
+          "type": "command",
+          "label": "printMonitoring",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Users\\mpointaux.admin\\Documents\\My documents\\My Programs\\Monitoring\\printMonitoring.bat"
+        },
+        {
+          "id": "outils-sharex",
+          "type": "app",
+          "label": "ShareX",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\ShareX\\ShareX.exe"
+        },
+        {
+          "id": "outils-treesize",
+          "type": "app",
+          "label": "TreeSize",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\Program Files\\JAM Software\\TreeSize Free\\TreeSizeFree.exe"
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "id": "sysinfo-outils",
+          "type": "sysinfo",
+          "label": "Sysinfo",
+          "icon": "",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "clock-outils",
+          "type": "clock",
+          "label": "Heure",
+          "icon": "",
+          "visible": true,
+          "order": 1
+        }
+      ]
+    },
+    "rdp": {
+      "left": [
+        {
+          "id": "back-rdp",
+          "type": "back",
+          "label": "Retour",
+          "icon": "↩️",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "open-rdp",
+          "type": "folder",
+          "label": "Ouvrir dossier",
+          "icon": "📂",
+          "target": "C:\\techbar\\RDP",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "rdp-0504-srv-dc1",
+          "type": "file",
+          "label": "0504-srv-dc1",
+          "icon": "🖥️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\RDP\\0504-srv-dc1.rdp"
+        },
+        {
+          "id": "rdp-0504-srv-files",
+          "type": "file",
+          "label": "0504-srv-files",
+          "icon": "🖥️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\RDP\\0504-srv-files.rdp"
+        },
+        {
+          "id": "rdp-0504-srv-sig",
+          "type": "file",
+          "label": "0504-srv-sig",
+          "icon": "🖥️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\RDP\\0504-srv-sig.rdp"
+        },
+        {
+          "id": "rdp-test",
+          "type": "file",
+          "label": "TEST",
+          "icon": "🖥️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\RDP\\TEST.rdp"
+        },
+        {
+          "id": "rdp-xibo",
+          "type": "file",
+          "label": "XIBO",
+          "icon": "🖥️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\RDP\\XIBO.rdp"
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "id": "sysinfo-rdp",
+          "type": "sysinfo",
+          "label": "Sysinfo",
+          "icon": "",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "clock-rdp",
+          "type": "clock",
+          "label": "Heure",
+          "icon": "",
+          "visible": true,
+          "order": 1
+        }
+      ]
+    },
+    "scripts": {
+      "left": [
+        {
+          "id": "back-scripts",
+          "type": "back",
+          "label": "Retour",
+          "icon": "↩️",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "open-scripts",
+          "type": "folder",
+          "label": "Ouvrir dossier",
+          "icon": "📂",
+          "target": "C:\\techbar\\Scripts",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "scripts-recherche-connection-pc",
+          "type": "command",
+          "label": "recherche connection PC",
+          "icon": "⚙️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\Scripts\\recherche connection PC.ps1"
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "id": "sysinfo-scripts",
+          "type": "sysinfo",
+          "label": "Sysinfo",
+          "icon": "",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "clock-scripts",
+          "type": "clock",
+          "label": "Heure",
+          "icon": "",
+          "visible": true,
+          "order": 1
+        }
+      ]
+    },
+    "services": {
+      "left": [
+        {
+          "id": "back-services",
+          "type": "back",
+          "label": "Retour",
+          "icon": "↩️",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "open-services",
+          "type": "folder",
+          "label": "Ouvrir dossier",
+          "icon": "📂",
+          "target": "C:\\techbar\\Services",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "services-0504-srv-files",
+          "type": "file",
+          "label": "0504-srv-files",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "C:\\techbar\\Services\\0504-srv-files.lnk"
+        },
+        {
+          "id": "services-glpi-alt",
+          "type": "url",
+          "label": "GLPI alt",
+          "icon": "🎫",
+          "visible": true,
+          "order": 9999,
+          "target": "https://support.e-lycee-paca.fr/index.php/?noAUTO=1"
+        },
+        {
+          "id": "services-gpo",
+          "type": "file",
+          "label": "gpo$",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "\\\\0504-srv-appli1\\gpo$"
+        },
+        {
+          "id": "services-homarr-dashboard",
+          "type": "url",
+          "label": "Homarr - DashBoard",
+          "icon": "📊",
+          "visible": true,
+          "order": 9999,
+          "target": "http://debianmika:7575/boards/Home"
+        },
+        {
+          "id": "services-nas-ds215j",
+          "type": "url",
+          "label": "NAS-DS215J",
+          "icon": "💽",
+          "visible": true,
+          "order": 9999,
+          "target": "http://10.64.233.95:5000/#/signin"
+        },
+        {
+          "id": "services-tools",
+          "type": "file",
+          "label": "Tools$",
+          "icon": "↗️",
+          "visible": true,
+          "order": 9999,
+          "target": "\\\\0504-srv-appli1\\tools$"
+        },
+        {
+          "id": "services-xibo",
+          "type": "url",
+          "label": "XIBO",
+          "icon": "🔗",
+          "visible": true,
+          "order": 9999,
+          "target": "http://0504-srv-xibo/dashboard"
+        },
+        {
+          "id": "services-zimbra-mail",
+          "type": "url",
+          "label": "Zimbra - Mail",
+          "icon": "🔗",
+          "visible": true,
+          "order": 9999,
+          "target": "https://messagerie.education.gouv.fr/#1"
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "id": "sysinfo-services",
+          "type": "sysinfo",
+          "label": "Sysinfo",
+          "icon": "",
+          "visible": true,
+          "order": 0
+        },
+        {
+          "id": "clock-services",
+          "type": "clock",
+          "label": "Heure",
+          "icon": "",
+          "visible": true,
+          "order": 1
+        }
+      ]
+    }
+  }
+}

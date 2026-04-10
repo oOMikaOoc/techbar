@@ -1,0 +1,11 @@
+{
+  "VSCODE.lnk": {
+    "order": 10,
+    "icon": "🛠️",
+    "label": "VSCODE",
+    "bgColor" : "#fefefe" 
+  },
+  "Audacity.lnk": {
+    "order": 11
+  }
+}

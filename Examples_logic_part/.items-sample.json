@@ -1,0 +1,10 @@
+{
+  "Arduino IDE.lnk": {
+    "order": 10,
+    "icon": "🛠️",
+    "label": "Arduino"
+  },
+  "Antigravity.lnk": {
+    "order": 20
+  }
+}
